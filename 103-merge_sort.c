@@ -2,74 +2,97 @@
 #include <stddef.h>
 
 /**
- * merge - Merge two sorted sub-arays into a single sorted array
- * @left: pointer to the first element of the list sub-array
- * @lft_size: size of the left sub array
- * @right: pointer to the first eleemnt of the right sub-array
- * @ryt_size: size of the right sub-array
- * @array: pointer to the first element of the array to sort
- */
-
-void merge(int *left, size_t lft_size, int *right, size_t ryt_size, int *array)
-{
-	int *result;
-	size_t i = 0, j = 0, k = 0;
-
-	result = malloc(sizeof(int) * (lft_size + ryt_size));
-
-	if (!result)
-	{
-		printf("Error: malloc failed in merge()\n");
-		exit(1);
-	}
-
-	while (i < lft_size && j < ryt_size)
-	{
-		if (left[i] < right[j])
-			result[k++] = left[i++];
-		else
-			result[k++] = right[j++];
-	}
-
-	while (i < lft_size)
-		result[k++] = left[i++];
-	while (j < ryt_size)
-		result[k++] = right[j++];
-	for (i = 0; i < lft_size + ryt_size; i++)
-		array[i] = result[i];
-
-	free(result);
-}
-
-/**
- * merge_sort - sort an array of integers in ascending order
- * using the Merge sort algorithm
- *
- * @array: pointer to the first eleemnt of the array to sort
- * @size: number of eleemnt in the array
+ * merge_sort - Merge two sorted sub-arays into a single sorted array
+ * using Merge sort algorithm
+ * @array: pointer to the array to be sorted
+ * @size: size of the array
  *
  * Return: 0
  */
+
 void merge_sort(int *array, size_t size)
 {
-	size_t middle = size / 2;
-	int *left, *right;
+	int *temp_array;
 
-	if (size <= 1)
+	if (!array || size < 2)
 		return;
-	left = array;
-	right = array + middle;
 
-	merge_sort(left, middle);
-	merge_sort(right, size - middle);
+	temp_array = malloc(sizeof(int) * size);
+
+	if (!temp_array)
+		return;
+
+	top_down_split_merge(array, 0, size, temp_array);
+	free(temp_array);
+}
+
+
+/**
+ * top_down_split_merge - recursively splits an array in half and merge int
+ * back together in sorted order
+ * @array: pointer to array to sort
+ * @start: starting index of the array to sort
+ * @end: ending index of the array to sort
+ * @temp_array: temporary array used during the merge process
+ *
+ * Return: 0
+ */
+
+void top_down_split_merge(int *array, size_t start, size_t end,
+			  int *temp_array)
+{
+	size_t middle;
+
+	if (end - start < 2)
+		return;
+
+	middle = (end + start) / 2;
+
+	top_down_split_merge(array, start, middle, temp_array);
+	top_down_split_merge(array, middle, end, temp_array);
+	top_down_merge(array, start, middle, end, temp_array);
+}
+
+/**
+ * top_down_merge - merges two sorted sub-arrays of an array back together
+ * @array: array containing the two sorted sub-arrays
+ * @start: starting index of the first sub-array
+ * @mid: ending index of the first sub-array (one less than the start of the
+ * second sub-array)
+ * @end: ending index of the second sub-array
+ * @temp_array: temporary array used during the merge process
+ *
+ * Return: 0
+ */
+
+void top_down_merge(int *array, size_t start, size_t middle, size_t end,
+		    int *temp_array)
+{
+	size_t i, j, k;
 
 	printf("Merging...\n[left]: ");
-	print_array(left, middle);
-	printf("[right]: ");
-	print_array(right, size - middle);
+	print_array(array + start, middle - start);
 
-	merge(left, middle, right, size - middle, array);
+	printf("[right]: ");
+	print_array(array + middle, end - middle);
+
+	for (i = start, j = middle, k = 0; i < middle && j < end; k++)
+	{
+		if (array[i] < array[j])
+			temp_array[k] = array[i++];
+		else
+
+			temp_array[k] = array[j++];
+	}
+
+	while (i < middle)
+		temp_array[k++] = array[i++];
+
+	while (j < end)
+		temp_array[k++] = array[j++];
+	for (i = start, k = 0; i < end; i++, k++)
+		array[i] = temp_array[k];
 
 	printf("[Done]: ");
-	print_array(array, size);
+	print_array(array + start, end - start);
 }
