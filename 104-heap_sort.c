@@ -46,7 +46,7 @@ void shift_down(int *array, int start, int end)
  * Return: 0
  */
 
-void heap_sort(int *array, int size)
+void heap_sort(int *array, size_t size)
 {
 	int start = (size - 2) / 2;
 	int end = size - 1;
