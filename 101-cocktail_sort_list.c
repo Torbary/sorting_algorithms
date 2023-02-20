@@ -1,6 +1,13 @@
 #include "sort.h"
 
-
+/**
+ *  swap_nodes - swap two node
+ *  @list : pointer to a pointer to the list
+ *  @node1: pointer to the head of the first node
+ *  @node2: pointer to the head of the second node
+ *
+ *  Return: 0
+ */
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 {
 
@@ -23,10 +30,10 @@ void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2)
 }
 
 /** cocktail_sort_list - Sorts a doubly linked list using the Cocktail shaker
- * sort algorithm
- * @list: pointer to a pointer to the head of a doubly linked list
+ *  sort algorithm
+ *  @list: pointer to a pointer to the head of a doubly linked list
  *
- * Return: 0
+ *  Return: 0
  */
 
 void cocktail_sort_list(listint_t **list)
@@ -83,4 +90,3 @@ void cocktail_sort_list(listint_t **list)
 		start = current->next;
 	}
 }
-
