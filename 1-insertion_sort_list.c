@@ -1,5 +1,6 @@
 #include "sort.h"
 
+
 /**
  * insertion_sort_list - Sort a doubly linked list in an ascending order
  * @list:  Double pointer to the first node in the list
@@ -11,10 +12,6 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current_node, *prev_node, *temp_node;
-
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
-
 	current_node = (*list)->next;
 
 	while (current_node != NULL)
@@ -35,8 +32,9 @@ void insertion_sort_list(listint_t **list)
 				prev_node->prev->next = current_node;
 			else
 				*list = current_node;
-			 prev_node->prev = current_node;
-			 current_node->next = prev_node;
+
+			prev_node->prev = current_node;
+			current_node->next = prev_node;
 
 			print_list(*list);
 
