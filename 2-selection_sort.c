@@ -1,7 +1,12 @@
 #include "sort.h"
 #include <stddef.h>
 
-
+/**
+ * swap - swap two integers
+ * @a: first int
+ * @b: second int
+ * Return: 0
+ */
 
 void swap(int *a, int *b)
 {
