@@ -57,7 +57,7 @@ void top_down_split_merge(int *array, size_t start, size_t end,
  * top_down_merge - merges two sorted sub-arrays of an array back together
  * @array: array containing the two sorted sub-arrays
  * @start: starting index of the first sub-array
- * @mid: ending index of the first sub-array (one less than the start of the
+ * @middle: ending index of the first sub-array (one less than the start of the
  * second sub-array)
  * @end: ending index of the second sub-array
  * @temp_array: temporary array used during the merge process
