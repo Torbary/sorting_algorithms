@@ -7,15 +7,15 @@
  * using the Counting sort algorithm
  *
  * @array: The pointer to array to be sorted
- * @size: The size of the array
- *
+* @size: The size of the array
+*
  * Return: 0
  */
 
 void counting_sort(int *array, size_t size)
 {
 	size_t i;
-	size_t maxValue = 0;
+        int maxValue = 0;
 	int *count_array, *output_array;
 
 	if (array == NULL || size < 2)
@@ -37,13 +37,13 @@ void counting_sort(int *array, size_t size)
 		return;
 	}
 
-	for (i = 0; i <= maxValue; i++)
+	for (i = 0; i <= (size_t) maxValue; i++)
 		count_array[i] = 0;
 
 	for (i = 0; i < size; i++)
 		count_array[array[i]]++;
 
-	for (i = 1; i <= maxValue; i++)
+	for (i = 1; i <= (size_t) maxValue; i++)
 		count_array[i] += count_array[i - 1];
 
 	for (i = size - 1; i > 0; i--)
@@ -54,10 +54,10 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < size; i++)
 		array[i] = output_array[i];
 
-	for (i = 0; i < maxValue; i++)
+	for (i = 0; i < (size_t) maxValue; i++)
 	{
 		printf("%d", count_array[i]);
-		if (i != maxValue)
+		if (i != (size_t) maxValue)
 			printf(", ");
 	}
 	printf("\n");
