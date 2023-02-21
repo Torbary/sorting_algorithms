@@ -2,7 +2,7 @@
 #include <stddef.h>
 
 /**
- * countSort - sort an array of integers in ascending order using 
+ * countSort - sort an array of integers in ascending order using
  * counting sort algorithm
  *
  * @array: pointer to array to be sorted
