@@ -37,5 +37,9 @@ void sift_down(int *array, int start, int end);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
 void counting_sort(int *array, size_t size);
+void countSort(int *array, int size, int exponent);
 void merge_sort(int *array, size_t size);
+void bitonic_sort(int *array, size_t size);
+void compare_swap(int *a, int *b, int dir);
+void bitonic_merge(int *array, size_t size, int dir);
 #endif
