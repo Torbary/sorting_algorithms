@@ -36,5 +36,7 @@ void top_down_split_merge(int *array, size_t start, size_t end, int *temp_array)
 void top_down_merge(int *array, size_t start, size_t mid, size_t end, int *temp_array);
 void sift_down(int *array, int start, int end);
 void heap_sort(int *array, size_t size);
+void radix_sort(int *array, size_t size);
+void counting_sort(int *array, int size);
 void merge_sort(int *array, size_t size);
 #endif
