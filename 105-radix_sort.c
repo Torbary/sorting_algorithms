@@ -1,7 +1,8 @@
 #include "sort.h"
+#include <stddef.h>
 
 /**
- * counting_sort - sort an array of integers in ascending order using 
+ * countSort - sort an array of integers in ascending order using 
  * counting sort algorithm
  *
  * @array: pointer to array to be sorted
@@ -10,10 +11,10 @@
  *
  * Return: 0
  */
-void counting_sort(int *array, int size, int exponent)
+void countSort(int *array, int size, int exponent)
 {
 	int *output, *count;
-	int i
+	int i;
 
 	output = malloc(sizeof(int) * size);
 	count = malloc(sizeof(int) * 10);
@@ -60,17 +61,17 @@ void radix_sort(int *array, size_t size)
 	int i, max;
 	int exponent;
 
-	if (array == NULL | size < 2)
+	if (array == NULL || size < 2)
 		return;
 	max = array[0];
 
-	for (i = 1; i < size; i++)
+	for (i = 1; i < (int) size; i++)
 	{
 		if (array[i] > max)
 			max = array[i];
 	}
 	for (exponent = 1; max / exponent > 0; exponent *= 10)
 	{
-		counting_sort(array, size);
+		countSort(array, size, exponent);
 	}
 }
