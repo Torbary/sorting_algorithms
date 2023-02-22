@@ -2,6 +2,19 @@
 #include <stddef.h>
 
 /**
+ * swap - swap two integers
+ * @a: first int
+ * @b: second int
+ * Return: 0
+ */
+
+void swap(int *a, int *b)
+{
+	int temp = *a;
+	*a = *b;
+	*b = temp;
+}
+/**
  * selection_sort - sort an array of in in accesding order
  * @array: pointers of array to be sorted
  * @size: size of the array
@@ -11,7 +24,7 @@
 
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, temp, miniIndex;
+	size_t i, j, miniIndex;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -21,9 +34,10 @@ void selection_sort(int *array, size_t size)
 			if (array[j] < array[miniIndex])
 				miniIndex = j;
 		}
-		temp = array[miniIndex];
-		array[miniIndex] = array[i];
-		array[i] = temp;
-		print_array(array, size);
+		if (miniIndex != i)
+		{
+			swap(&array[miniIndex], &array[i]);
+			print_array(array, size);
+		}
 	}
 }
