@@ -5,7 +5,7 @@
  * @array: pointer to the unsorted array
  * @size: sise of the array
  *
- * Return: 0
+ * Return: void 
  */
 
 
