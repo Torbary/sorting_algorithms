@@ -5,13 +5,14 @@
  * insertion_sort_list - Sort a doubly linked list in an ascending order
  * @list:  Double pointer to the first node in the list
  *
- * Return: 0
+ * Return: void
  */
 
 
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *current_node, *prev_node, *temp_node;
+
 	current_node = (*list)->next;
 
 	while (current_node != NULL)

@@ -10,16 +10,16 @@
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
 void insertion_sort_list(listint_t **list);
-void swap(int* xp, int* yp);
+void swap(int *xp, int *yp);
 void print_list(const listint_t *list);
 void print_array(const int *array, size_t size);
 void selection_sort(int *array, size_t size);
@@ -31,8 +31,10 @@ void quicksort_recursive(int *array, int low, int high, size_t size);
 void cocktail_sort_list(listint_t **list);
 int partition(int *array, int low, int high, size_t size);
 void swap_nodes(listint_t **list, listint_t *node1, listint_t *node2);
-void top_down_split_merge(int *array, size_t start, size_t end, int *temp_array);
-void top_down_merge(int *array, size_t start, size_t mid, size_t end, int *temp_array);
+void top_down_split_merge(int *array, size_t start, 
+			size_t end, int *temp_array);
+void top_down_merge(int *array, size_t start, 
+			size_t mid, size_t end, int *temp_array);
 void sift_down(int *array, int start, int end);
 void heap_sort(int *array, size_t size);
 void radix_sort(int *array, size_t size);
