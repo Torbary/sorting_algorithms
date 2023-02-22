@@ -5,9 +5,8 @@
  * @array: pointer to the unsorted array
  * @size: sise of the array
  *
- * Return: void 
+ * Return: void
  */
-
 
 
 void bubble_sort(int *array, size_t size)
